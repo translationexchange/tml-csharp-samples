@@ -21,7 +21,8 @@ namespace Tr8nSample
 
             Tr8nClient.SetConfig("tr8nconfig.yml", "dev");
 
-            Console.WriteLine("default language is " + Tr8nClient.defaultLanguage);
+            Console.WriteLine("Default language is " + Tr8nClient.defaultLanguage);
+            Console.WriteLine("Default locale is " + Tr8nClient.defaultLocale);
 
             while (true)
             {

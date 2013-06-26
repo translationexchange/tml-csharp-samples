@@ -4,11 +4,10 @@ default:
     host: translate-sandbox.geni.com
     access_token: 
     app_key:
-	testing: default 
+    testing: default 
 
-  local:
-    current_locale: en-US
-	disabled: false
+  current_locale: en-US
+  disabled: false
 
 dev:
   remote:
