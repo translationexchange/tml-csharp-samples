@@ -2,14 +2,15 @@
 default:
   remote:
     host: translate-sandbox.geni.com
+    client_id: 49695651ced49a2bc
     access_token: 
     app_key:
-    testing: default 
 
   current_locale: en-US
   disabled: false
 
 dev:
   remote:
-    host: translate-sandbox.geni.com
-	testing: dev
+    host: sandbox.tr8nhub.com
+    client_id: 381506e902bccdca6
+    access_token: abfa419bd97cae092

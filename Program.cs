@@ -18,13 +18,20 @@ namespace Tr8nSample
 
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("TR8N Sample Application");
 
-            Tr8nClient.SetConfig("tr8nconfig.yml", "dev");
+            application.SetConfig("tr8nconfig.yml", "dev");
+            application.init(application.config["remote:host"],application.config["remote:client_id"],application.config["remote:access_token"],null);
+            application.defaultLanguage = "ru";
 
-            Console.WriteLine("Default language is " + Tr8nClient.defaultLanguage);
-            Console.WriteLine("Default locale is " + Tr8nClient.defaultLocale);
+            Console.WriteLine("Default language is " + application.defaultLanguage);
+            Console.WriteLine("Default locale is " + application.defaultLocale);
+            Console.WriteLine("Flag for Russia is " + new language("ru").flagUrl);
 
+            Console.WriteLine("Supported Languages are:");
+            foreach (language lan in application.languages)
+                Console.WriteLine(lan.englishName + " - " + lan.nativeName);
 
             while (true)
             {
@@ -34,17 +41,23 @@ namespace Tr8nSample
                 if (string.IsNullOrWhiteSpace(tml))
                     break;
 
-                Console.WriteLine("Data Tokens:");
                 tokenList dataTokens = new tokenList("data", tml);
-                foreach (dataToken tok in dataTokens.tokens)
-                    Console.WriteLine(tok.tokenText);
+                if (dataTokens.tokens.Count > 0)
+                {
+                    Console.WriteLine("Data Tokens:");
+                    foreach (dataToken tok in dataTokens.tokens)
+                        Console.WriteLine(tok.tokenText);
+                }
 
-                Console.WriteLine("Transform Tokens:");
                 tokenList transTokens = new tokenList("transform", tml);
-                foreach (transformToken tok in transTokens.tokens)
-                    Console.WriteLine(tok.tokenText);
+                if (transTokens.tokens.Count > 0)
+                {
+                    Console.WriteLine("Transform Tokens:");
+                    foreach (transformToken tok in transTokens.tokens)
+                        Console.WriteLine(tok.tokenText);
+                }
 
-                Console.WriteLine(Tr8n.Tr8nClient.translate(tml,"count",17,"user","Richard"));
+                Console.WriteLine(application.translate(tml,"count",17,"user","Richard","sitename","Familylink.com"));
 
             }
 
