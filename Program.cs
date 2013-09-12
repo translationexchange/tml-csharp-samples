@@ -29,9 +29,9 @@ namespace Tr8nSample
             Console.WriteLine("Default locale is " + application.defaultLocale);
             Console.WriteLine("Flag for Russia is " + new language("ru").flagUrl);
 
-            Console.WriteLine("Supported Languages are:");
-            foreach (language lan in application.languages)
-                Console.WriteLine(lan.englishName + " - " + lan.nativeName);
+            //Console.WriteLine("Supported Languages are:");
+            //foreach (language lan in application.languages)
+            //    Console.WriteLine(lan.englishName + " - " + lan.nativeName);
 
             while (true)
             {
@@ -46,7 +46,7 @@ namespace Tr8nSample
                 {
                     Console.WriteLine("Data Tokens:");
                     foreach (dataToken tok in dataTokens.tokens)
-                        Console.WriteLine(tok.tokenText);
+                        Console.WriteLine(tok.name);
                 }
 
                 tokenList transTokens = new tokenList("transform", tml);
@@ -57,7 +57,10 @@ namespace Tr8nSample
                         Console.WriteLine(tok.tokenText);
                 }
 
-                Console.WriteLine(application.translate(tml,"count",17,"user","Richard","sitename","Familylink.com"));
+//                Console.WriteLine(tml.translatep(17, "Richard","Familylink.com"));
+                Console.WriteLine(tml.translate("href","http://www.test.com","class","myclass","style","mystyle"));
+
+//                Console.WriteLine(application.translate(tml,"count",17,"user","Richard","sitename","Familylink.com"));
 
             }
 
