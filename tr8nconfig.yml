@@ -11,6 +11,6 @@ default:
 
 dev:
   remote:
-    host: sandbox.tr8nhub.com
-    client_id: 381506e902bccdca6
-    access_token: abfa419bd97cae092
+    host: 192.168.52.73
+    client_id: 30788a6518275b178
+    access_token: 61adfb452edc4cc85
